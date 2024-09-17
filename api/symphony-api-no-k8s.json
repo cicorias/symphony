@@ -594,6 +594,22 @@
         "port": 8082,
         "pipeline": [
           {
+            "type": "middleware.http.tracing",
+            "properties": {
+              "pipeline": [
+                {
+                  "exporter" : {
+                    "type": "tracing.exporters.console",
+                    "backendUrl": "",
+                    "sampler": {
+                      "sampleRate": "always"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
             "type": "middleware.http.cors",
             "properties": {
               "Access-Control-Allow-Headers": "authorization,Content-Type",
